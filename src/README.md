@@ -1,5 +1,5 @@
 # File System
-###  written by Hitesh Joshi - sendmailtojoshi@gmail.com
+###  written by Lolik
 
 
 the trick here is that class Dir extends Class File
