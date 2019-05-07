@@ -27,7 +27,8 @@ public class Dir extends Filee{
         return newDir;
     }
     public void addFile(String fileName , double size){
-        fileList.add(new Filee(fileName, size, Constants.ATTRIBUTES_READ_WRITE));
+        Filee f = new Filee(fileName, size, Constants.ATTRIBUTES_READ_WRITE);
+        fileList.add(f);
     }
     public List<Dir> getAllDirs(){
         return dirList;
@@ -41,6 +42,28 @@ public class Dir extends Filee{
         getAllFilesAndDirRecursive(this);
     }
     //rw---date-----------------------type---Name---size----
+
+    private  void getAllFilesAndDirRecursive2(Dir dir) {
+        if (dir == null)
+            return;
+        for (Dir aDir: dir.getAllDirs())
+        dir.getAllDirs().forEach(d -> {
+            getAllFilesAndDirRecursive2(d);
+
+            System.out.println(d.name);
+            System.out.println("file size: "+d.getAllFiles().size());
+        });
+
+    }
+
+
+
+
+
+
+
+
+
     private  void getAllFilesAndDirRecursive(Dir dir){
         if (dir == null)
             return ;
@@ -49,8 +72,9 @@ public class Dir extends Filee{
             System.out.println(filee.getAttribute()+"  "+filee.getDateCreated()+" "+filee.getType()+"  "+filee.getSize()+"   "+filee.getName());
 
         List<Dir> currDirList = dir.getAllDirs();
-        for(Dir currDir:currDirList)
+       for(Dir currDir:currDirList)
             getAllFilesAndDirRecursive(currDir);
+       // currDirList.forEach(d ->  getAllFilesAndDirRecursive2(d));
 
     }
 
