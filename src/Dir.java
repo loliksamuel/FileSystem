@@ -56,7 +56,15 @@ public class Dir extends Filee{
 
     }
 
-
+    private  void getAllFilesRecursive2(Dir dir) {
+        if (dir == null)
+            return;
+        for (Dir aDir: dir.getAllDirs())
+        dir.getAllDirs().forEach(d -> {
+            getAllFilesRecursive2(d);
+            System.out.println("file size: "+d.getAllFiles().size());
+        });
+    }
 
 
 
@@ -107,6 +115,7 @@ public class Dir extends Filee{
         return totalSize;
     }
 
+    
     /*
     private  int count(Node node){
 
